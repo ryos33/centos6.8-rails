@@ -52,6 +52,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.provision "shell-basic-setting", type: "shell", path: "./provision-script/basic-setting.sh", privileged: true
+  config.vm.provision "shell-copy-vagrant-key", type: "shell", path: "./provision-script/copy-vagrant-key.sh", privileged: true
 #  config.vm.provision "shell-pubkey", type: "shell", path: "./provision-script/pubkey.sh", privileged: true
   config.vm.provision "shell-kernel", type: "shell", path: "./provision-script/kernel.sh", privileged: true
 #  config.vm.provision "shell-gui", type: "shell", path: "./provision-script/gui.sh", privileged: true

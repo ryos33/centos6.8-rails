@@ -25,7 +25,5 @@ rbenv versions
 
 ruby -v
 
-exec $SHELL
-
 gem update --system --no-ri --no-rdoc
 rbenv rehash
