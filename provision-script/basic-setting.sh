@@ -1,5 +1,7 @@
 #!/bin/sh
 
+yum -y update
+
 service iptables stop
 service ip6tables stop
 chkconfig iptables off

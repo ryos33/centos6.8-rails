@@ -2,9 +2,9 @@ Vagrant.configure(2) do |config|
 
   box_name = "bento/centos-6.8"
   host_name = "centos-6-8-rails"
-  memory = 4096
+  memory = 2048
   cpus = 2
-  private_ip = "192.168.33.109"
+  private_ip = "192.168.34.109"
   vboxsf_defs = [
     {
       host_dir: "./data",
@@ -13,7 +13,7 @@ Vagrant.configure(2) do |config|
       guest_group: "vagrant",
     }
   ]
-  ruby_ver = '2.5.0'
+  ruby_ver = '2.3.0'
   rbenv_dir = '/opt/rbenv'
   rails_ver = '5.1.4'
 
@@ -56,7 +56,9 @@ Vagrant.configure(2) do |config|
 #  config.vm.provision "shell-pubkey", type: "shell", path: "./provision-script/pubkey.sh", privileged: true
   config.vm.provision "shell-kernel", type: "shell", path: "./provision-script/kernel.sh", privileged: true
 #  config.vm.provision "shell-gui", type: "shell", path: "./provision-script/gui.sh", privileged: true
-  config.vm.provision "shell-rbenv", type: "shell", path: "./provision-script/rbenv.sh", privileged: true, args: [ruby_ver, rbenv_dir]
-  config.vm.provision "shell-rails", type: "shell", path: "./provision-script/rails.sh", privileged: true, args: [rails_ver]
+  config.vm.provision "shell-rbenv", type: "shell", path: "./provision-script/rbenv.sh", privileged: true, args: [ruby_ver, 'vagrant']
+#  config.vm.provision "shell-rbenv", type: "shell", path: "./provision-script/rbenv.sh", privileged: true, args: [ruby_ver, 'ALL', rbenv_dir]
+#  config.vm.provision "shell-rails", type: "shell", path: "./provision-script/rails.sh", privileged: true, args: [rails_ver, 'vagrant']
+#  config.vm.provision "shell-rails", type: "shell", path: "./provision-script/rails.sh", privileged: true, args: [rails_ver, 'ALL']
 
 end
