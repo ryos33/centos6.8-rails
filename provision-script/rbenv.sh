@@ -4,7 +4,7 @@ ruby_ver=${1:-2.3.0}
 install_user=${2:-vagrant}
 rbenv_dir=${3:-/opt/rbenv}
 
-yum -y install gcc gcc-c++ glibc-headers openssl-devel readline libyaml-devel readline-devel zlib zlib-devel git-all epel-release vim wget sqlite-devel tcl
+yum -y install gcc gcc-c++ glibc-headers openssl-devel readline libyaml-devel readline-devel zlib zlib-devel git-all epel-release vim wget sqlite-devel tcl libffi-devel
 
 umask 0022
 
@@ -15,14 +15,15 @@ if [ $install_user = "ALL" ]; then
 else
   owner=$install_user
   rbenv_profile_root='$HOME/.rbenv'
-  rbenv_profile="/home/${install_user}/.bash_profile"
+#  rbenv_profile="/home/${install_user}/.bash_profile"
+  rbenv_profile=/etc/profile.d/rbenv_profile.sh
 
   home_dir=`sudo -i -u $owner pwd`
   rbenv_dir="${home_dir}/.rbenv"
 fi
 
 
-cat << EOS >> $rbenv_profile
+cat << EOS > $rbenv_profile
 if [ -d "${rbenv_profile_root}" ]; then
   export RBENV_ROOT="${rbenv_profile_root}"
   export PATH="\${RBENV_ROOT}/bin:\${PATH}"

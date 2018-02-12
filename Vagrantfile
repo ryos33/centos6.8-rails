@@ -16,6 +16,9 @@ Vagrant.configure(2) do |config|
   ruby_ver = '2.3.0'
   rbenv_dir = '/opt/rbenv'
   rails_ver = '5.1.4'
+  node_ver = '7.10.1'
+  ionic_ver = '2.1.17'
+  cordova_ver = '4.3.1'
 
   config.vm.box = box_name
   config.vm.hostname = host_name
@@ -60,5 +63,7 @@ Vagrant.configure(2) do |config|
 #  config.vm.provision "shell-rbenv", type: "shell", path: "./provision-script/rbenv.sh", privileged: true, args: [ruby_ver, 'ALL', rbenv_dir]
 #  config.vm.provision "shell-rails", type: "shell", path: "./provision-script/rails.sh", privileged: true, args: [rails_ver, 'vagrant']
 #  config.vm.provision "shell-rails", type: "shell", path: "./provision-script/rails.sh", privileged: true, args: [rails_ver, 'ALL']
+  config.vm.provision "shell-npm", type: "shell", path: "./provision-script/npm.sh", privileged: true, args: [node_ver]
+  config.vm.provision "shell-ionic", type: "shell", path: "./provision-script/ionic.sh", privileged: true, args: [ionic_ver, cordova_ver]
 
 end
