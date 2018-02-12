@@ -19,6 +19,7 @@ Vagrant.configure(2) do |config|
   node_ver = '7.10.1'
   ionic_ver = '2.1.17'
   cordova_ver = '4.3.1'
+  samba_allow_network = '192.168.33.'
 
   config.vm.box = box_name
   config.vm.hostname = host_name
@@ -65,5 +66,6 @@ Vagrant.configure(2) do |config|
 #  config.vm.provision "shell-rails", type: "shell", path: "./provision-script/rails.sh", privileged: true, args: [rails_ver, 'ALL']
   config.vm.provision "shell-npm", type: "shell", path: "./provision-script/npm.sh", privileged: true, args: [node_ver]
   config.vm.provision "shell-ionic", type: "shell", path: "./provision-script/ionic.sh", privileged: true, args: [ionic_ver, cordova_ver]
+  config.vm.provision "shell-samba", type: "shell", path: "./provision-script/samba.sh", privileged: true, args: [samba_allow_network]
 
 end
